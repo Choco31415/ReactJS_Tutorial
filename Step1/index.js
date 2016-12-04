@@ -1,5 +1,5 @@
 /*
-A simple game showing off component functions and inserting JS into HTML tags.
+A simple game where you roll a die and win or lose money.
 */
 
 import React from 'react';
