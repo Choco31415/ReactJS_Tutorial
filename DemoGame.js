@@ -1,4 +1,4 @@
-*
+/*
 A simple game showing off component functions and inserting JS into HTML tags.
 */
 
@@ -7,7 +7,7 @@ import ReactDOM from 'react-dom';
 
 var App = React.createClass({
     getRoll: function() {
-        return Math.floor(Math.random() * 6);
+        return Math.floor(Math.random() * 6) + 1;
     },
 
     render: function() {
