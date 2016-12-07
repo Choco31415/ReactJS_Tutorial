@@ -1,0 +1,354 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf600
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;\red9\green80\blue208;\red230\green230\blue230;\red255\green255\blue255;
+}
+{\*\expandedcolortbl;\csgray\c100000;\cssrgb\c0\c41176\c85098;\csgray\c92143;\csgray\c100000;
+}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\b\fs36 \cf0 \expnd0\expndtw0\kerning0
+Introduction
+\b0\fs24 \
+\
+ReactJS is a JS library built around displaying content and organizing web pages. Its code is highly reusable yet simple. We'll get into the specifics later on.\
+\
+For those of you familiar with the Model-View-Control way of designing projects, ReactJS is the View.\
+\
+
+\b\fs36 Set Up
+\b0\fs24 \
+\
+Note: Before you continue, it is best to have a web editor. If you have one already, ignore this. Otherwise, I recommend\'a0{\field{\*\fldinst{HYPERLINK "http://brackets.io/"}}{\fldrslt \cf2 \ul \ulc2 Brackets.}}\
+\
+First off, let's install\'a0{\field{\*\fldinst{HYPERLINK "https://www.npmjs.com/"}}{\fldrslt \cf2 \ul \ulc2 npm}}. Some Javascript projects needs to borrow the functionality of another Javascript project (called a package), and npm gives tools to make this easier. npm is a JavaScript Package Manager.\
+\
+Now, how do we set up a ReactJS project? Easily, if we're starting from Scratch. Open up Terminal/Command Line, then follow the first page of this Facebook tutorial:\'a0{\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/installation.html"}}{\fldrslt \cf2 \ul \ulc2 link}}\
+\
+Once you finish, you have your first React app!\
+\
+Running "npm start" should have opened the website in a browser, but if it didn't, go to\'a0{\field{\*\fldinst{HYPERLINK "http://localhost:3000/"}}{\fldrslt \cf2 \ul \ulc2 http://localhost:3000/}}. When you want to stop hosting the website, just hit Control+C in Terminal/Command Line.\
+\
+This method of making a React app does make several assumptions, one of which is that you have a single page application. However, that's okay. Facebook uses only one page, which is possible thanks to React.\
+\
+If you are looking to migrate a current website to React, or just want more flexibility, the set up process is much messier. Here's a CodeMentor page describing the process, but it is unnecessary for us:\'a0{\field{\*\fldinst{HYPERLINK "https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr"}}{\fldrslt \cf2 \ul \ulc2 link}}\
+\
+
+\b\fs36 Coding
+\b0\fs24 \
+\
+Remember, take this a bite at a time. It is best not to do everything in one sitting!\
+\
+Also, I do assume prior knowledge of HTML & CSS. Knowing JS would be good too.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Dissecting the Default
+\b0\fs24 \
+\
+Our React website has a lot of stuff, including a spinning image. How is this all happening?\
+\
+First off, let me point out a few important files:\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf0 public/index.html
+\b0 \
+
+\b \
+\pard\pardeftab720\partightenfactor0
+
+\b0 \cf0 This is the main webpage. The "app" div is where all the React stuff is being shoved in. To see this for yourself, check out the source code in your browser. To open developer view, press Option+Command+C for Mac, Control+Shift+I for Windows.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b \cf0 src/index.js
+\b0 \
+\
+This is the entry point for our react code.\
+\
+
+\b src/app.js
+\b0 \
+\
+This is the file that contains all of the added html seen in the "app" div.\
+\
+
+\b build/
+\b0 \
+\
+When the browser asks for your website, it will only get /build files. Why?\
+\
+ReactJS is not readable by browsers. Instead, npm converts everything into plain JS, and shoves it into /build/static/js.\
+\
+More generally, the Facebook tutorial makes it so that all browser stuff is shoved into /build, so there are some file duplicates here.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Hello World!
+\b0\fs24 \
+\
+It's time for us to make our first React app! Open up src/index.js. Then delete everything. We're starting from scratch.\
+\
+First off, we want to add React functionality to our JS file, so add this line:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 import React from 'react';\
+\cb4 \
+Then, we want to make it so that React can alter the website DOM, aka this allows it to display website content. Add:\
+\
+\cb3 import ReactDOM from 'react-dom';\
+\cb4 \
+Finally, we want to display the words "Hello world!" on our website, so add:\
+\
+\cb3 ReactDOM.render(<p>"Hello world!"</p>, document.getElementById('root'));\
+\cb4 \
+What this does is it inserts a <p> into the root div in public/index.html\
+\
+Refresh your browser. You've just made your first React app!\
+\
+Overall:\
+\
+\cb3 import React from 'react';\
+import ReactDOM from 'react-dom';\
+\
+ReactDOM.render(<p>"Hello world!"</p>, document.getElementById('root'));\
+\cb4 \
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 JSX
+\b0\fs24 \
+\
+One of the nice things about ReactJS is that it uses the JSX standard, aka JS with HTML. Meaning, we can write tidy HTML alongside our JS! This is so helpful.\
+\
+Now, ReactJS makes me really happy, and I want to express that! :)\
+\
+Replace src/index.js with this:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 import React from 'react';\
+import ReactDOM from 'react-dom';\
+\
+ReactDOM.render(\
+    (\
+    <ul>\
+\'a0 \'a0 \'a0 \'a0 <li>Hello world!</li>\
+\'a0 \'a0 \'a0 \'a0 <li>Hello world!</li>\
+\'a0 \'a0 \'a0 \'a0 <li>Hello world!</li>\
+\'a0 \'a0 \'a0 \'a0 <li>Wo!</li>\
+\'a0 \'a0 </ul>\
+    ),\
+\'a0 \'a0 document.getElementById('root')\
+);\
+\cb4 \
+Notice something new? If you want an html element that is longer then 1 line, you'll need to wrap it in (). Also, there can only be one top-level element, so this would be invalid:\
+\
+\cb3 (\
+<p>"Hello world!"</p>\
+<p>"Hello world!"</p>\
+)\
+\cb4 \
+Instead, you would need:\
+\
+\cb3 (\
+<div>\
+	<p>"Hello world!"</p>\
+	<p>"Hello world!"</p>\
+</div>\
+)\
+\cb4 \
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Components
+\b0\fs24 \
+\
+React Components are a fundamental piece of the language. Everything is pretty much built off of them Let's start with a code example and explain what it does. Code:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 import React from 'react';\
+import ReactDOM from 'react-dom';\
+\
+var App = React.createClass(\{\
+\'a0 \'a0render: function() \{\
+\'a0 \'a0 \'a0 \'a0return <p>Now announcing your new app: ME!!!!</p>;\
+\'a0 \'a0\}\'a0\
+\});\
+\
+ReactDOM.render(<App />, document.getElementById('root'));\
+\cb4 \
+What this code does is it inserts a <App /> into your root div. But <App /> isn't valid html, right?!? What ReactJS does it looks for an App component, and then calls its render function. In this case, <App /> is replaced with <p>Now announcing your new app: ME!!!!</p>\
+\
+Take a moment to let this sink in, or mess around a little with the code. We'll only go higher.\
+\
+Ready?\
+\
+Note: When creating a component in ReactJS, you always pass in a JS object. Notice that?\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Game Example\
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 or JS in HTML & Component Functions
+\b0 \
+\
+For the completed "Game Example" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Base"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
+\
+Like any good language, React components can have functions. So, let's make a game!\
+\
+Building off of the "App component" code, make the component return:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 (\
+	<div>\
+		<p>You rolled: 0.5</p>\
+		<p>You lost $4!</p>\
+	</div>\
+)\
+\cb4 \
+This isn't a fun game though! You always roll 0.5. 
+\i Lame.
+\i0 \'a0Instead, let's make it so you roll something random between 0 and 1. In the render function, add a variable:\
+\
+\cb3 var roll = Math.random();\
+\cb4 \
+Now, replace 0.5 with \{roll\}.\
+\
+The reason why we use \{ \} is because the render function returns html/text, yet we want to display the value of a "roll". As a compromise, we escape the html with \{ \}. Anything inside of \{ \} is interpreted as JS.\
+\
+Refresh the page a few times. Your roll should change.\
+\
+Another issue with our game is that we always lose $4. That's like stealing candy from a baby! Let's make it so that we occasionally win money. Inside your render function, isert this if/else statement:\
+\
+\cb3 var message = "";\
+if (roll < 0.3) \{\
+	message = "You win $8!";\
+\} else \{\
+	message = "You lose $4... :(";\
+\}\
+\cb4 \
+Also, replace "You lose $4!" with \{message\}\
+\
+Now we have a working game! There's one last thing we need though. Normally when you roll a die, you get a number 1-6, not 0.546789323. So, let's make good die rolls.\
+\
+Replace Math.getRandom() with this.getRoll(). This will be a function in our component. Then, in our App component, and above render, add:\
+\
+\cb3 getRoll: function() \{\
+	return Math.floor(Math.random() * 6) + 1;\
+\},\
+\cb4 \
+When we call this.getRoll(), we are running this piece of code, which itself returns a random number 1-6.\
+\
+Just to be safe, inside render, replace "roll < 0.3" with "roll < 3".\
+\
+Note: "this" is standard Javascript notation. An object has properties, like "render" and "getRoll", and you access them through this.propertyName.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Multi-class Projects
+\b0\fs24 \
+\
+For the completed "Multi-class Projects" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Multi-class"}}{\fldrslt Github link}}\
+\
+We'll continue to be building off of the game example, so let's tidy it up!\
+\
+Delete everything in src/App.js, then add:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 import React from 'react';\
+\cb4 \
+Then, cut and delete the App component code from src/Index.html and paste it into src/App.js.\
+\
+Finally, end src/App.js with:\
+\
+\cb3 module.exports = App;\
+\cb4 \
+Inside of src/Index.js, add this to the top:\
+\
+\cb3 import App from './App.js';\
+\cb4 \
+Once done, the game should be working like normal!\
+\
+What's happening is by using module.exports, any file can use the App component. src/Index.js does want to use App, so it imports it. Tada!\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Events
+\b0\fs24 \
+\
+For the completed "Events" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Events"}}{\fldrslt Github link}}\
+\
+One of the things I would love to do in this game is to add a replay button. Let's start by adding an html button:\
+\
+In the App component, make it render a button below the <p> tags:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 <button>Play</button>\
+\cb4 \
+So far so good. The next step is to make the button do something. In ReactJS, all HTML events (like a button press) can be assigned functions. Update your button like this:\
+\
+\cb3 <button onClick=\{this.handleClick\}>Play</button>\
+\cb4 \
+Note: React events names are camel case to differentiate them from HTML event names.\
+\
+Note: All React events can be found here:\'a0{\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/events.html"}}{\fldrslt \cf2 \ul \ulc2 link}}\
+\
+Then, in your App component, add this method:\
+\
+\cb3 \'a0 \'a0 handleClick: function(e) \{\
+\'a0 \'a0 \'a0 \'a0 console.log("Clickity click");\
+\'a0 \'a0 \},\
+\cb4 \
+What it does is it prints "Clickity click" to the browser's console. To test your button, go to your website. Then, go into developer mode (see Coding), open Console, and click your button a few times.\
+\
+Note: It is standard to use "handle" at the beginning of the name of a function that handles an event.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 State
+\b0\fs24 \
+\
+For the completed "State" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/State"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
+\
+What we want when the button is pressed is to re-roll. We could re-call the render method, but that generally isn't a good idea.\
+\
+Instead, we'll rewrite the component a little bit by introducing state. State is a set of variables that any code in the component can reference. For example, if we had a Person component, they might have "hunger", "thirst", "height", and "weight" in their state.\
+\
+Generally, only a component should alter state. Nothing else.\
+\
+Anyway, let's actually implement state.\
+\
+Inside app, add this at the very top:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 getInitialState: function () \{\
+\'a0 \'a0 return \{ roll: -1\};\
+\'a0 \},\
+\cb4 \
+Inside handleClick, add:\
+\
+\cb3 this.setState(\{roll: this.getRoll()\});\
+\cb4 \
+Finally, in render, set roll to this.state.roll.\
+\
+Now clicking "Play" will re-roll the die and give you $8 or make you lose $4!\
+\
+What's happening now is that App is given a state variable named "roll". It's initially set to -1, which does cause problems if you refresh the page! Later, when you click on the "Play" button, handleClick is called, and it updates the state to have a new random roll number.\
+\
+Here's where an important detail comes in to play. Calling setState will then trigger render() to be called afterwards, which re-renders App. In fact, these are lifecycle methods. More on them later!\
+\
+If you really dislike the -1 "bug", try and see if you can make a work around! In render, my recommendation is if roll equals -1 (roll == -1), return the message "Please press play.". If roll does not equal -1 (roll != -1), then do the standard roll checks and return the usual stuff. Later on, we can make a much more elegant solution.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 To Be Continued
+\b0\fs24 \
+\
+There are three things left to cover:\
+\
+* Props\
+* Component-to-Component interactions and organization\
+* Lifecycle methods\
+\
+Then we should have everything, I mean everything. I will get these tidbits out in another email in the next few days. In the meanwhile, dig in!}
