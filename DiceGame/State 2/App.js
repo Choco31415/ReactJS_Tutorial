@@ -1,8 +1,11 @@
 import React from 'react';
 
 var App = React.createClass({
-    getInitialState: function () {
-        return { roll: -1};
+    getInitialState: function() {
+        return {
+            roll: -1,
+            money: 12,
+        };
     },
     
     getRoll: function() {
@@ -10,7 +13,19 @@ var App = React.createClass({
     },
     
     handleClick: function(e) {
-        this.setState({roll: this.getRoll()});
+        var roll = this.getRoll();
+        var money = this.state.money;
+        
+        if (roll < 3) {
+            money += 8;
+        } else {
+            money -= 4;
+        }
+        
+        this.setState({
+            roll: roll,
+            money: money,
+        });
     },
 
     render: function() {
@@ -18,7 +33,7 @@ var App = React.createClass({
 
         var message = "";
         if (roll < 3) {
-            message = "You win $8!"
+            message = "You win $8!";
         } else {
             message = "You lose $4!";
         }
@@ -27,6 +42,7 @@ var App = React.createClass({
             <div>
                 <p>You rolled: {roll}</p>
                 <p>{message}</p>
+                <p>Money left: ${this.state.money}</p>
                 <button onClick={this.handleClick}>Play</button>
             </div>
         );

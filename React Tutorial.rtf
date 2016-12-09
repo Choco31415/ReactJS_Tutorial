@@ -1,24 +1,26 @@
 {\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf600
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;\red9\green80\blue208;\red230\green230\blue230;\red255\green255\blue255;
-}
+\red230\green230\blue230;}
 {\*\expandedcolortbl;\csgray\c100000;\cssrgb\c0\c41176\c85098;\csgray\c92143;\csgray\c100000;
-}
-\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\csgray\c92143;}
+\margl1440\margr1440\vieww10800\viewh17900\viewkind0
 \deftab720
 \pard\pardeftab720\partightenfactor0
 
-\f0\b\fs36 \cf0 \expnd0\expndtw0\kerning0
-Introduction
-\b0\fs24 \
+\f0\b\fs48 \cf0 \expnd0\expndtw0\kerning0
+\ul \ulc0 Introduction
+\b0\fs24 \ulnone \
 \
-ReactJS is a JS library built around displaying content and organizing web pages. Its code is highly reusable yet simple. We'll get into the specifics later on.\
+ReactJS is a popular JS library built around displaying content and organizing web pages. Its code is highly reusable yet simple.\
 \
-For those of you familiar with the Model-View-Control way of designing projects, ReactJS is the View.\
+ReactJS also uses JSX, which is JavaScript with HTML support.\
+\
+You'll see both of those things when we start coding. For now, let's set up a ReactJS project!\
 \
 
-\b\fs36 Set Up
-\b0\fs24 \
+\b\fs48 \ul Set Up
+\b0\fs24 \ulnone \
 \
 Note: Before you continue, it is best to have a web editor. If you have one already, ignore this. Otherwise, I recommend\'a0{\field{\*\fldinst{HYPERLINK "http://brackets.io/"}}{\fldrslt \cf2 \ul \ulc2 Brackets.}}\
 \
@@ -35,17 +37,32 @@ This method of making a React app does make several assumptions, one of which is
 If you are looking to migrate a current website to React, or just want more flexibility, the set up process is much messier. Here's a CodeMentor page describing the process, but it is unnecessary for us:\'a0{\field{\*\fldinst{HYPERLINK "https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr"}}{\fldrslt \cf2 \ul \ulc2 link}}\
 \
 
-\b\fs36 Coding
-\b0\fs24 \
+\b\fs36 \ul Syntax Highlighting
+\b0\fs24 \ulnone \
+\
+Note: This next part is optional!\
+\
+Unfortunately, the Facebook tutorial sets up all files with the .js extension instead of .jsx . This means syntax highlighting in code editors will be wonky... If you want to fix that, follow these steps:\
+\
+* Go to node_modules/react-script/config/paths.js. Find the lines saying 'src/index.js', and replace them with 'src/index.jsx'. Do not touch 'template/src/index.js'!\
+* In src/, rename all file extensions from js to jsx.\
+* In src/index.jsx, replace "./App.js" with "./App.jsx"\
+\
+Next you will need to stop and re-start npm, as described above.\
+\
+Whenever you add a new file to the project, make sure that its file extension is .jsx . Also, when coding, if you refer to another file (like with import), make sure to change file extensions from .js to .jsx .\
+\
+
+\b\fs48 \ul Coding
+\b0\fs24 \ulnone \
 \
 Remember, take this a bite at a time. It is best not to do everything in one sitting!\
 \
 Also, I do assume prior knowledge of HTML & CSS. Knowing JS would be good too.\
 \
-\pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 Dissecting the Default
-\b0\fs24 \
+\b\fs36 \ul Dissecting the Default
+\b0\fs24 \ulnone \
 \
 Our React website has a lot of stuff, including a spinning image. How is this all happening?\
 \
@@ -86,8 +103,8 @@ More generally, the Facebook tutorial makes it so that all browser stuff is shov
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 Hello World!
-\b0\fs24 \
+\b\fs36 \cf0 \ul \ulc0 Hello World!
+\b0\fs24 \ulnone \
 \
 It's time for us to make our first React app! Open up src/index.js. Then delete everything. We're starting from scratch.\
 \
@@ -117,8 +134,8 @@ ReactDOM.render(<p>"Hello world!"</p>, document.getElementById('root'));\
 \cb4 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 JSX
-\b0\fs24 \
+\b\fs36 \cf0 \ul \ulc0 JSX
+\b0\fs24 \ulnone \
 \
 One of the nice things about ReactJS is that it uses the JSX standard, aka JS with HTML. Meaning, we can write tidy HTML alongside our JS! This is so helpful.\
 \
@@ -160,8 +177,8 @@ Instead, you would need:\
 \cb4 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 Components
-\b0\fs24 \
+\b\fs36 \cf0 \ul \ulc0 Components
+\b0\fs24 \ulnone \
 \
 React Components are a fundamental piece of the language. Everything is pretty much built off of them Let's start with a code example and explain what it does. Code:\
 \
@@ -187,11 +204,10 @@ Note: When creating a component in ReactJS, you always pass in a JS object. Noti
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 Game Example\
-\pard\pardeftab720\partightenfactor0
-
-\fs24 \cf0 or JS in HTML & Component Functions
-\b0 \
+\b\fs36 \cf0 \ul \ulc0 Game Example
+\fs28 \ulnone \
+or JSX Expressions & Component Functions
+\b0\fs24 \
 \
 For the completed "Game Example" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Base"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
 \
@@ -215,11 +231,11 @@ This isn't a fun game though! You always roll 0.5.
 \cb4 \
 Now, replace 0.5 with \{roll\}.\
 \
-The reason why we use \{ \} is because the render function returns html/text, yet we want to display the value of a "roll". As a compromise, we escape the html with \{ \}. Anything inside of \{ \} is interpreted as JS.\
+The reason why we use \{ \} is because the render function returns html/text, yet we want to display the value of a "roll". As a compromise, we escape the html with \{ \}. Anything inside of \{ \} is interpreted as JS. This is called a JSX expression, but you can forget that.\
 \
 Refresh the page a few times. Your roll should change.\
 \
-Another issue with our game is that we always lose $4. That's like stealing candy from a baby! Let's make it so that we occasionally win money. Inside your render function, isert this if/else statement:\
+Another issue with our game is that we always lose $4. That's like stealing candy from a baby! Let's make it so that we occasionally win money. Inside your render function, insert this if/else statement:\
 \
 \cb3 var message = "";\
 if (roll < 0.3) \{\
@@ -246,8 +262,8 @@ Note: "this" is standard Javascript notation. An object has properties, like "re
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 Multi-class Projects
-\b0\fs24 \
+\b\fs36 \cf0 \ul \ulc0 Multi-class Projects
+\b0\fs24 \ulnone \
 \
 For the completed "Multi-class Projects" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Multi-class"}}{\fldrslt Github link}}\
 \
@@ -274,8 +290,8 @@ What's happening is by using module.exports, any file can use the App component.
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 Events
-\b0\fs24 \
+\b\fs36 \cf0 \ul \ulc0 Events
+\b0\fs24 \ulnone \
 \
 For the completed "Events" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Events"}}{\fldrslt Github link}}\
 \
@@ -300,24 +316,28 @@ Then, in your App component, add this method:\
 \'a0 \'a0 \'a0 \'a0 console.log("Clickity click");\
 \'a0 \'a0 \},\
 \cb4 \
-What it does is it prints "Clickity click" to the browser's console. To test your button, go to your website. Then, go into developer mode (see Coding), open Console, and click your button a few times.\
+What it does is it prints "Clickity click" to the browser's console. To test your button, go to your website. Then, go into developer mode (see 
+\b Coding
+\b0 ), open Console, and click your button a few times.\
 \
 Note: It is standard to use "handle" at the beginning of the name of a function that handles an event.\
 \
+Note: The e in function() is the click event. You can get various click info from it, like e.pageX and e.pageY, which are the (x,y) of the mouse. Event properties can be found here: {\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/events.html#mouse-events"}}{\fldrslt link}}\
+\
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 State
-\b0\fs24 \
+\b\fs36 \cf0 \ul \ulc0 State
+\b0\fs24 \ulnone \
 \
 For the completed "State" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/State"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
 \
 What we want when the button is pressed is to re-roll. We could re-call the render method, but that generally isn't a good idea.\
 \
-Instead, we'll rewrite the component a little bit by introducing state. State is a set of variables that any code in the component can reference. For example, if we had a Person component, they might have "hunger", "thirst", "height", and "weight" in their state.\
+Instead, we'll rewrite the component a little bit by introducing 
+\i state
+\i0 . State is a set of variables that any code in a component can reference. For example, if we had a Person component, they might have "hunger", "thirst", "height", and "weight" in their state. I, a Person, would have a this.state.height of 6' 10"\
 \
-Generally, only a component should alter state. Nothing else.\
-\
-Anyway, let's actually implement state.\
+Let's implement a state that keeps track of die roll.\
 \
 Inside app, add this at the very top:\
 \
@@ -329,26 +349,261 @@ Inside app, add this at the very top:\
 Inside handleClick, add:\
 \
 \cb3 this.setState(\{roll: this.getRoll()\});\
-\cb4 \
-Finally, in render, set roll to this.state.roll.\
+\cb4 		\
+Finally, inside render, we will set roll to this.state.roll\
 \
-Now clicking "Play" will re-roll the die and give you $8 or make you lose $4!\
+In your browser, refresh the page. Now clicking "Play" will re-roll the die and give you $8 or make you lose $4! Double the fun!\
 \
-What's happening now is that App is given a state variable named "roll". It's initially set to -1, which does cause problems if you refresh the page! Later, when you click on the "Play" button, handleClick is called, and it updates the state to have a new random roll number.\
+What's happening is that App is given a state variable named "roll". "roll" is initially set to -1. Later, when you click on the "Play" button, handleClick is called, and it updates the state to have a new random "roll" number.\
 \
 Here's where an important detail comes in to play. Calling setState will then trigger render() to be called afterwards, which re-renders App. In fact, these are lifecycle methods. More on them later!\
 \
-If you really dislike the -1 "bug", try and see if you can make a work around! In render, my recommendation is if roll equals -1 (roll == -1), return the message "Please press play.". If roll does not equal -1 (roll != -1), then do the standard roll checks and return the usual stuff. Later on, we can make a much more elegant solution.\
+Looking back, don't you like your game? You've coded it!\
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs28 \cf0 To Be Continued
+\b\fs28 \cf0 Part II\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 This part does not cover new material, but is needed for section 
+\b Props
+\b0  later on. If you are feeling lazy, you can skip to the completed code.\
+\
+For the completed "Part II" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/State%202"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
+\
+I wonder, if we allow replaying, why not keep track of the player's money? Let's do that!\
+\
+Inside getInitialState, return this:\
+\
+\cb5 \{\
+	roll: -1,\
+	money: 12\
+\}\
+\cb4 \
+At the beginning of handleClick, create a money variable that is set to this.state.money.\
+\
+In the middle of handleClick, add in this if/else:\
+\
+\cb5 if (roll < 3) \{\
+    money += 8;\
+\} else \{\
+    money -= 4;\
+\}\
+\cb4 \
+Shove roll and money back into state.\
+\
+Final step. We need to display how much money we have, so set a new money variable to this.state.money, and add this to the return:\
+\
+\cb5 <p>Money left: $\{this.state.money\}</p>\cb4 \
+\
+Try playing your game! It should work beautifully.\
+\
+Note: When you setState, you don't have to pass in values for every state variable. In handleClick, I could setState(\{roll: roll\}), and only roll would be updated. All other values would be left as is.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Single Point of Truth
 \b0\fs24 \
 \
-There are three things left to cover:\
+One very important rule about state is to not overstuff it. You want to minimize what's tracked inside of state to reduce potential for mistake. Let's say I have a theoretical app with this code:\
 \
-* Props\
-* Component-to-Component interactions and organization\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 handleClick: function() \{\
+    var rand = this.getRandomNumber();\
+    this.setState(\{\
+        number: rand,\
+        message: "You have the number " + rand + "."\
+    \});\
+\},\
+\
+render: function() \{\
+    return <p>\{this.state.message\}</p>;\
+\}\
+\cb4 \
+The important thing to note is that if you know this.state.number, you can always figure out this.state.message. This means that message should not be stored in state; it should be computed right before it's used. What should be done:\
+\
+\cb3 handleClick: function() \{\
+    var rand = this.getRandomNumber();\
+    this.setState(\{\
+        number: rand\
+    \});\
+\},\
+\
+render: function() \{\
+    return <p>"You have the number " + \{this.state.number\} + "."</p>;\
+\}\
+\cb4 \
+Looking back at our game, this is why message is computed in render() and not tracked by state. message can easily be recomputed from roll.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \ul \ulc0 Props
+\fs28 \ulnone \
+\
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 For the completed "Props" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Props"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
+\
+Props! They're one of my favorite parts of ReactJS, even if I don't know why.\
+\
+In HTML, remember how you can pass in information to div's?\
+\
+\cb5 <div style="title: Lol, how did you find me?">Welcome to my website!</div>\
+\cb4 \
+We can do the same thing with ReactJS too! These are called props, and have a few uses.\
+\
+Now, let's start off simple. Back in our game, let's make it so that we can 
+\i control
+\i0  how much money we start with. I'd like 9999 dollars instead of 12, wouldn't you agree?\
+\
+First off, in src/index.js, render <App money=\{9999\} /> instead of <App />.\
+\
+Now, in src/App.js, in getInitialState, set money to this.props.money. Done!\
+\
+Yes, it's that easy.\
+\
+Try playing again.\
+\
+Early, remember how I said only a component should alter its state? What if component A wants to pass information to component B? That should be done through props.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 DefaultProps
+\b0\fs24 \
+\
+What if someone doesn't pass in the money prop? We can handle that! Add this to the top of App:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5     getDefaultProps: function() \{\
+        return \{\
+            money: 12\
+        \};\
+    \},\
+\cb4 \
+Notice how it's similar to getInitialState?\
+\
+If you want to test this for yourself, in src/Index.js, render <App /> .\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 PropTypes
+\b0\fs24 \
+\
+One of the concerns whenever you work with props is that you can't control what's passed in. What if someone passed "apple" in as this.props.money? Our app would crash! Plus, in complex apps, this would be hard to debug.\
+\
+ReactJS combats this by allowing you to control the type of props passed in. For our app, add this below getDefaultProps:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 propTypes: \{\
+    money: React.PropTypes.number\
+\},\
+\cb4 \
+What this says is that the money prop 
+\i must
+\i0  be a number.\
+\
+Note: For a full list of React PropTypes, go {\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/typechecking-with-proptypes.html"}}{\fldrslt here}}.\
+\
+Note: If you 
+\i require
+\i0  that someone pass in a prop, you can append .isRequired to the end of React.PropTypes.xxxx\
+\
+We will be switching to different examples for future topics. If you are interested in experimenting with the game a bit more, try these things:\
+\
+* Fix the -1 bug. When you refresh the page, you are told that you rolled -1. Whaaaa....\
+** Hint: Inside render, return some text if this.state.roll == -1, else do the normal stuff.\
+* Make it so that you can't play when you have negative money.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \ul \ulc0 Component-to-Component Interactions
+\b0\fs24 \ulnone \
+\
+For the completed "Component-to-Component Interactions" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Madlib/Completed"}}{\fldrslt Github link}}\
+\
+I have coded a simple madlib project for us, but it doesn't work! It makes __ very __. Let's fix it. First off, copy these files into your src/ folder: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Madlib/Base"}}{\fldrslt link}}\
+\
+Look around the project a bit and see what's happening. It's a bit of an expansion compared to what we're used to: 5 files! Look at the website in your browser too.\
+\
+Had a moment?\
+\
+What we need is for the content of the input boxes to appear in the madlib. The way things are set up, that means Child1/Child2 need to pass information to App, which sends it back down to Sibling.\
+\
+However, if App is sending information to Sibling, we need it to have default values. Give App an initial State containing name and item, both set to "".\
+\
+The second step is, in App's render, to pass name and item into Sibling. That would normally require:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 <Sibling name=\{this.props.name\} item=\{this.props.item\} />\
+\cb4 \
+However that looks long, and we're lazy. There is a shorter way to type this ...\
+\
+Literally, ... , the spread operator. In JS, it lists all the items in an array. ReactJS extends this to work on objects too. Replace <Sibling /> with:\
+\
+\cb3 <Sibling \{...this.state\}/>\
+\cb4 \
+Thirdly, in Sibling, replace _1_ with \{this.props.name\} and _2_ with \{this.props.item\}.\
+\
+Fourthly, we need to make it so Child1 and Child2 can change the word values stored inside App. Let's put, in App, this function:\
+\
+\cb5     changeWord: function(key, value) \{\
+        var state = \{\};\
+        state[key] = value;\
+        this.setState(state);\
+    \},\
+\cb4 \
+We need to let Child1 and Child2 access this function, so in App's render, give them the prop changeWord=\{this.changeWord\}.\
+\
+Inside Child1's handleChange, use:\
+\
+\cb5         var name = e.target.value;\
+        this.props.changeWord("name", name);\
+\cb1 \
+Inside Child2's handleChange, use:\
+\
+\cb5         var item = e.target.value;\
+        this.props.changeWord("item", item);\
+\cb1 \
+You're done! Try out the madlib.\
+\
+Let's discuss what just happened. Whenever Children need to communicate with each other, they should go through their parent. Child1 and Child2 both used changeWord to change App's word, and App passed all changes down to Sibling.\
+\
+Another thing to note concerns programming patterns. A component should generally do one thing, and one thing only.\
+\
+Our madlib project has good organization. App handles data management, Child1 and Child2 offer a way to change data, and Sibling displays data. All's happy here.\
+\
+Meanwhile, our die game has bad organization. Bad code, bad bad. App does three jobs: display game data, display a play button, and handle game logic. It should split into three components (aka two new ones), with App handling the game logic.\
+\
+
+\b\fs36 \ul Stateless vs Stateful Components
+\b0\fs24 \ulnone \
+\
+Now that we're dabbling with multiple components, let me introduce a new concept. A stateful component is a component with a state, and a stateless component is one without a state.\
+\
+App is stateful. Child1, Child2, and Sibling are stateless.\
+\
+Generally, projects should be organized such that a 
+\i stateful
+\i0  parent passes event handlers to a
+\i  stateless
+\i0  child component. These events handlers an then be used to update the parent's state.\
+\
+Secondly, when the parent's state is updated, the parent should pass its state down to a 
+\i sibling
+\i0  component.\
+\
+This information is very important when writing larger React projects. Look back at the madlib project and see how this all applies there.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \cb4 \ul \ulc0 To Be Continued
+\b0\fs24 \ulnone \
+\
+There is one thing left to cover:\
+\
 * Lifecycle methods\
 \
-Then we should have everything, I mean everything. I will get these tidbits out in another email in the next few days. In the meanwhile, dig in!}
+Then we should have everything, I mean everything. There will be a review section to help this all sink in.\
+\
+I will finish this sometime soon. In the meanwhile, dig in!}
