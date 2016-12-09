@@ -37,22 +37,6 @@ This method of making a React app does make several assumptions, one of which is
 If you are looking to migrate a current website to React, or just want more flexibility, the set up process is much messier. Here's a CodeMentor page describing the process, but it is unnecessary for us:\'a0{\field{\*\fldinst{HYPERLINK "https://www.codementor.io/tamizhvendan/tutorials/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr"}}{\fldrslt \cf2 \ul \ulc2 link}}\
 \
 
-\b\fs36 \ul Syntax Highlighting
-\b0\fs24 \ulnone \
-\
-Note: This next part is optional!\
-\
-Unfortunately, the Facebook tutorial sets up all files with the .js extension instead of .jsx . This means syntax highlighting in code editors will be wonky... If you want to fix that, follow these steps:\
-\
-* Go to node_modules/react-script/config/paths.js. Find the lines saying 'src/index.js', and replace them with 'src/index.jsx'. Do not touch 'template/src/index.js'!\
-* In src/, rename all file extensions from js to jsx.\
-* In src/index.jsx, replace "./App.js" with "./App.jsx"\
-\
-Next you will need to stop and re-start npm, as described above.\
-\
-Whenever you add a new file to the project, make sure that its file extension is .jsx . Also, when coding, if you refer to another file (like with import), make sure to change file extensions from .js to .jsx .\
-\
-
 \b\fs48 \ul Coding
 \b0\fs24 \ulnone \
 \
@@ -606,4 +590,24 @@ There is one thing left to cover:\
 \
 Then we should have everything, I mean everything. There will be a review section to help this all sink in.\
 \
-I will finish this sometime soon. In the meanwhile, dig in!}
+I will finish this sometime soon. In the meanwhile, dig in!\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs48 \cf0 \ul \ulc0 Extras\
+
+\fs24 \
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf0 \cb1 \ulc0 Syntax Highlighting
+\b0\fs24 \ulnone \
+\
+Unfortunately, the Facebook tutorial sets up all files with the .js extension instead of .jsx . This means syntax highlighting in code editors will be wonky... If you want to fix that, follow these steps:\
+\
+* Go to node_modules/react-script/config/paths.js. Find the lines saying 'src/index.js', and replace them with 'src/index.jsx'. Do not touch 'template/src/index.js'!\
+* In src/, rename all file extensions from js to jsx.\
+* In src/index.jsx, replace "./App.js" with "./App.jsx"\
+\
+Next you will need to stop and re-start npm, as described above.\
+\
+Whenever you add a new file to the project, make sure that its file extension is .jsx . Also, when coding, if you refer to another file (like with import), make sure to change file extensions from .js to .jsx .}
