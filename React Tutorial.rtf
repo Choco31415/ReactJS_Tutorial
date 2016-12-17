@@ -1,8 +1,8 @@
-{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf600
+{\rtf1\ansi\ansicpg1252\cocoartf1504\cocoasubrtf760
 {\fonttbl\f0\fswiss\fcharset0 Helvetica;}
 {\colortbl;\red255\green255\blue255;\red9\green80\blue208;\red230\green230\blue230;\red255\green255\blue255;
 \red230\green230\blue230;}
-{\*\expandedcolortbl;\csgray\c100000;\cssrgb\c0\c41176\c85098;\csgray\c92143;\csgray\c100000;
+{\*\expandedcolortbl;;\cssrgb\c0\c41176\c85098;\csgray\c92143;\csgray\c100000;
 \csgray\c92143;}
 \margl1440\margr1440\vieww10800\viewh17900\viewkind0
 \deftab720
@@ -14,9 +14,11 @@
 \
 ReactJS is a popular JS library built around displaying content and organizing web pages. Its code is highly reusable yet simple.\
 \
-ReactJS also uses JSX, which is JavaScript with HTML support.\
+ReactJS also uses JSX, which is JavaScript with XML support.\
 \
-You'll see both of those things when we start coding. For now, let's set up a ReactJS project!\
+Before we dig in, always feel free to contact me for help or support!\
+\
+Secondly, take this tutorial a bite at a time. Too much is too much!\
 \
 
 \b\fs48 \ul Set Up
@@ -39,10 +41,6 @@ If you are looking to migrate a current website to React, or just want more flex
 
 \b\fs48 \ul Coding
 \b0\fs24 \ulnone \
-\
-Remember, take this a bite at a time. It is best not to do everything in one sitting!\
-\
-Also, I do assume prior knowledge of HTML & CSS. Knowing JS would be good too.\
 \
 
 \b\fs36 \ul Dissecting the Default
@@ -87,7 +85,7 @@ More generally, the Facebook tutorial makes it so that all browser stuff is shov
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 Hello World!
+\b\fs36 \cf0 \ul Hello World!
 \b0\fs24 \ulnone \
 \
 It's time for us to make our first React app! Open up src/index.js. Then delete everything. We're starting from scratch.\
@@ -118,12 +116,16 @@ ReactDOM.render(<p>"Hello world!"</p>, document.getElementById('root'));\
 \cb4 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 JSX
+\b\fs36 \cf0 \ul JSX
 \b0\fs24 \ulnone \
 \
-One of the nice things about ReactJS is that it uses the JSX standard, aka JS with HTML. Meaning, we can write tidy HTML alongside our JS! This is so helpful.\
+One of the nice things about ReactJS is that it uses the JSX standard, aka JS with XML. Meaning, we can write tidy HTML alongside our JS! This is so helpful.\
 \
-Now, ReactJS makes me really happy, and I want to express that! :)\
+In our previous example, you might have noticed this: \cb3 <p>"Hello world!"</p>\cb4 \
+\
+That is JSX at action.\
+\
+Now, ReactJS makes me really happy, and I want to express that! :D :D :D\
 \
 Replace src/index.js with this:\
 \
@@ -137,20 +139,22 @@ ReactDOM.render(\
 \'a0 \'a0 \'a0 \'a0 <li>Hello world!</li>\
 \'a0 \'a0 \'a0 \'a0 <li>Hello world!</li>\
 \'a0 \'a0 \'a0 \'a0 <li>Hello world!</li>\
-\'a0 \'a0 \'a0 \'a0 <li>Wo!</li>\
+\'a0 \'a0 \'a0 \'a0 <li>Wo! :D</li>\
 \'a0 \'a0 </ul>\
     ),\
 \'a0 \'a0 document.getElementById('root')\
 );\
 \cb4 \
-Notice something new? If you want an html element that is longer then 1 line, you'll need to wrap it in (). Also, there can only be one top-level element, so this would be invalid:\
+Notice something new? We went multi-line!\
+\
+If you want an html element that is longer then 1 line, you'll need to wrap it in (). Also, there can only be one top-level element, so this would be bad:\
 \
 \cb3 (\
 <p>"Hello world!"</p>\
 <p>"Hello world!"</p>\
 )\
 \cb4 \
-Instead, you would need:\
+Instead, this is good:\
 \
 \cb3 (\
 <div>\
@@ -161,10 +165,10 @@ Instead, you would need:\
 \cb4 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 Components
+\b\fs36 \cf0 \ul Components
 \b0\fs24 \ulnone \
 \
-React Components are a fundamental piece of the language. Everything is pretty much built off of them Let's start with a code example and explain what it does. Code:\
+React Components are a fundamental piece of the language. Everything is built off of them. Let's start with a code example and explain what it does. Le code:\
 \
 \pard\pardeftab720\partightenfactor0
 \cf0 \cb3 import React from 'react';\
@@ -178,9 +182,22 @@ var App = React.createClass(\{\
 \
 ReactDOM.render(<App />, document.getElementById('root'));\
 \cb4 \
-What this code does is it inserts a <App /> into your root div. But <App /> isn't valid html, right?!? What ReactJS does it looks for an App component, and then calls its render function. In this case, <App /> is replaced with <p>Now announcing your new app: ME!!!!</p>\
+This code makes a new component called "App". It then inserts an \cb5 <App />\cb4  into the root element. However, there is no \cb5 <App />\cb4  in HTML. What do?\
 \
-Take a moment to let this sink in, or mess around a little with the code. We'll only go higher.\
+React goes to the App component and calls its render function. This returns a \cb5 <p>Now announcing your new app: ME!!!!</p>\cb1 . If you refresh your browser, that's exactly what you'll see, neatly nestled inside the root element.\
+\
+As one last experiment, have the ReactDOM render this:\
+\
+\cb5 (\
+<div>\
+	<App />\
+	<App />\
+</div>\
+)\
+\cb4 \
+Refresh your browser. You got double the announcement!\
+\
+Take a moment to let this sink in, and please do mess around with the code. We'll only go higher.\
 \
 Ready?\
 \
@@ -188,16 +205,16 @@ Note: When creating a component in ReactJS, you always pass in a JS object. Noti
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 Game Example
+\b\fs36 \cf0 \ul Game Example
 \fs28 \ulnone \
-or JSX Expressions & Component Functions
+or JSX Expressions
 \b0\fs24 \
 \
 For the completed "Game Example" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Base"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
 \
-Like any good language, React components can have functions. So, let's make a game!\
+Like any good language, React components can have functions. To showcase this, let's make a game! It'll be a simple game where we roll die.\
 \
-Building off of the "App component" code, make the component return:\
+Building off of the previous code, make the App component return:\
 \
 \pard\pardeftab720\partightenfactor0
 \cf0 \cb3 (\
@@ -209,15 +226,15 @@ Building off of the "App component" code, make the component return:\
 \cb4 \
 This isn't a fun game though! You always roll 0.5. 
 \i Lame.
-\i0 \'a0Instead, let's make it so you roll something random between 0 and 1. In the render function, add a variable:\
+\i0 \'a0Instead, let's make it so you roll something random. At the top of the render function, add this variable:\
 \
 \cb3 var roll = Math.random();\
 \cb4 \
-Now, replace 0.5 with \{roll\}.\
+Now, replace 0.5 with \cb1 \{roll\}\cb4 . This way we can see what we rolled.\
 \
-The reason why we use \{ \} is because the render function returns html/text, yet we want to display the value of a "roll". As a compromise, we escape the html with \{ \}. Anything inside of \{ \} is interpreted as JS. This is called a JSX expression, but you can forget that.\
+The reason why we use \{ \} is because the render function returns html/text. If we replaced 0.5 with roll, we would literally return the word "roll". Instead, we escape the html/text with \{ \}. Anything inside of \{ \} is interpreted as JS. This is called a JSX expression.\
 \
-Refresh the page a few times. Your roll should change.\
+Refresh the page a few times. Your roll should be random.\
 \
 Another issue with our game is that we always lose $4. That's like stealing candy from a baby! Let's make it so that we occasionally win money. Inside your render function, insert this if/else statement:\
 \
@@ -228,37 +245,52 @@ if (roll < 0.3) \{\
 	message = "You lose $4... :(";\
 \}\
 \cb4 \
-Also, replace "You lose $4!" with \{message\}\
+Also, return \{message\} instead of "You lose $4!". Notice the \{\}?\
 \
-Now we have a working game! There's one last thing we need though. Normally when you roll a die, you get a number 1-6, not 0.546789323. So, let's make good die rolls.\
+Now we have a working game!\
 \
-Replace Math.getRandom() with this.getRoll(). This will be a function in our component. Then, in our App component, and above render, add:\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \cb4 \ul \ulc0 Component Functions
+\b0\fs24 \cb4 \ulnone \
 \
-\cb3 getRoll: function() \{\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb4 For the completed "Component Functions" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Component%20Functions"}}{\fldrslt \cf2 \cb4 \ul \ulc2 Github link}}\cb4 \
+\
+I see an issue with our game. Normally when you roll a die, you get a number 1-6, not 0.546789323. So, let's make good die rolls!\
+\
+First off, in App, and above render, add:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 getRoll: function() \{\
 	return Math.floor(Math.random() * 6) + 1;\
 \},\
 \cb4 \
-When we call this.getRoll(), we are running this piece of code, which itself returns a random number 1-6.\
+Secondly, \cb4 in App's render, replace \cb5 Math.getRandom()\cb4  with \cb5 this.getRoll()\cb4  .\cb4 \
 \
-Just to be safe, inside render, replace "roll < 0.3" with "roll < 3".\
+When we call this.getRoll(), we are running the getRoll function, which returns a random number 1-6.\
+\
+Just to be safe, inside render, replace \cb5 roll < 0.3\cb4  with \cb5 roll < 3\cb4  .\
 \
 Note: "this" is standard Javascript notation. An object has properties, like "render" and "getRoll", and you access them through this.propertyName.\
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 Multi-class Projects
+\b\fs36 \cf0 \ul Multi-class Projects
 \b0\fs24 \ulnone \
 \
 For the completed "Multi-class Projects" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Multi-class"}}{\fldrslt Github link}}\
 \
-We'll continue to be building off of the game example, so let's tidy it up!\
+We'll continue to build off of the game example, so let's take a moment to tidy up!\
 \
 Delete everything in src/App.js, then add:\
 \
 \pard\pardeftab720\partightenfactor0
 \cf0 \cb3 import React from 'react';\
 \cb4 \
-Then, cut and delete the App component code from src/Index.html and paste it into src/App.js.\
+Then, cut and 
+\i delete
+\i0  the App component code from src/Index.html and paste it into src/App.js.\
 \
 Finally, end src/App.js with:\
 \
@@ -270,79 +302,90 @@ Inside of src/Index.js, add this to the top:\
 \cb4 \
 Once done, the game should be working like normal!\
 \
-What's happening is by using module.exports, any file can use the App component. src/Index.js does want to use App, so it imports it. Tada!\
+What's happening is by using module.exports, any file can use the App component. src/Index.js does want to use App, so it imports it. Tada! This makes App very reusable.\
+\
+Note: The way you set up your project can change how you import other files.\
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 Events
+\b\fs36 \cf0 \ul Events
 \b0\fs24 \ulnone \
 \
 For the completed "Events" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Events"}}{\fldrslt Github link}}\
 \
-One of the things I would love to do in this game is to add a replay button. Let's start by adding an html button:\
+One of the things this game needs is a replay button. It's been nagging me for awhile.\
 \
 In the App component, make it render a button below the <p> tags:\
 \
 \pard\pardeftab720\partightenfactor0
 \cf0 \cb3 <button>Play</button>\
 \cb4 \
-So far so good. The next step is to make the button do something. In ReactJS, all HTML events (like a button press) can be assigned functions. Update your button like this:\
+Refresh the browser; looking good so far.\
+\
+The next step is to make the button do something. In ReactJS, all HTML events (like a button press) can be assigned functions. Update your button like this:\
 \
 \cb3 <button onClick=\{this.handleClick\}>Play</button>\
 \cb4 \
-Note: React events names are camel case to differentiate them from HTML event names.\
-\
-Note: All React events can be found here:\'a0{\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/events.html"}}{\fldrslt \cf2 \ul \ulc2 link}}\
-\
-Then, in your App component, add this method:\
+Then, in App and above render, add this method:\
 \
 \cb3 \'a0 \'a0 handleClick: function(e) \{\
 \'a0 \'a0 \'a0 \'a0 console.log("Clickity click");\
 \'a0 \'a0 \},\
 \cb4 \
-What it does is it prints "Clickity click" to the browser's console. To test your button, go to your website. Then, go into developer mode (see 
-\b Coding
-\b0 ), open Console, and click your button a few times.\
+Now, when the button detects a click, it will call this.handleClick. Notice the \{ \}?\
+\
+When this.handleClick is called, it will print "Clickity click" to the browser's console.\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb4 To test your button, refresh your website. Then, go into developer mode (see 
+\b \cb4 Coding
+\b0 \cb4 ), open Console, and click your button a few times.\
+\
+Note: React events names are camel case to differentiate them from HTML event names.\cb4 \
 \
 Note: It is standard to use "handle" at the beginning of the name of a function that handles an event.\
 \
-Note: The e in function() is the click event. You can get various click info from it, like e.pageX and e.pageY, which are the (x,y) of the mouse. Event properties can be found here: {\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/events.html#mouse-events"}}{\fldrslt link}}\
+\cb4 Note: All React events can be found here:\'a0{\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/events.html"}}{\fldrslt \cf2 \cb4 \ul \ulc2 link}}\cb4 \
+\
+Note: The e in function() is the click event. You can get various click info from it, like the position of the mouse when the click occurred. All event properties can be found here: {\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/events.html#mouse-events"}}{\fldrslt link}}\
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 State
+\b\fs36 \cf0 \ul State
 \b0\fs24 \ulnone \
 \
 For the completed "State" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/State"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
 \
-What we want when the button is pressed is to re-roll. We could re-call the render method, but that generally isn't a good idea.\
+Our replay button isn't fully implemented yet. It still doesn't replay the game. How will we do this? We could call \cb5 this.render()\cb4 , but that isn't good practice.\
 \
-Instead, we'll rewrite the component a little bit by introducing 
+Instead, we'll rewrite App by introducing 
 \i state
-\i0 . State is a set of variables that any code in a component can reference. For example, if we had a Person component, they might have "hunger", "thirst", "height", and "weight" in their state. I, a Person, would have a this.state.height of 6' 10"\
+\i0 . State is a set of variables that any code in the component can reference. For example, if we had a Person component, they might have "hunger", "thirst", "height", and "weight" in their state. I, a Person, would have a this.state.height of 5' 10" .\
 \
-Let's implement a state that keeps track of die roll.\
+We will implement a state that tracks die roll.\
 \
-Inside app, add this at the very top:\
+Inside App, add this to the very top:\
 \
 \pard\pardeftab720\partightenfactor0
 \cf0 \cb3 getInitialState: function () \{\
 \'a0 \'a0 return \{ roll: -1\};\
 \'a0 \},\
 \cb4 \
-Inside handleClick, add:\
+Replace the innards of handleClick with:\
 \
-\cb3 this.setState(\{roll: this.getRoll()\});\
+\cb3 this.setState( \{ roll: this.getRoll() \} );\
 \cb4 		\
-Finally, inside render, we will set roll to this.state.roll\
+Finally, inside render, we will set roll to \cb5 this.state.roll\cb4  .\
 \
-In your browser, refresh the page. Now clicking "Play" will re-roll the die and give you $8 or make you lose $4! Double the fun!\
+In your browser, refresh the page. You will see you rolled -1. Clicking "Play" will re-roll the die for profits or debt! Double the fun!\
 \
 What's happening is that App is given a state variable named "roll". "roll" is initially set to -1. Later, when you click on the "Play" button, handleClick is called, and it updates the state to have a new random "roll" number.\
 \
-Here's where an important detail comes in to play. Calling setState will then trigger render() to be called afterwards, which re-renders App. In fact, these are lifecycle methods. More on them later!\
+Here's where an important detail comes in to play. Calling setState will then trigger render() to be called afterwards, which re-renders App.\
 \
 Looking back, don't you like your game? You've coded it!\
+\
+Note: Only a component can alter its state. Nothing else!\
 \
 \pard\pardeftab720\partightenfactor0
 
@@ -356,44 +399,44 @@ Looking back, don't you like your game? You've coded it!\
 \
 For the completed "Part II" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/State%202"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
 \
-I wonder, if we allow replaying, why not keep track of the player's money? Let's do that!\
+If we allow replaying, then it makes me wonder, why not keep track of the player's money too? Let's do that!\
 \
 Inside getInitialState, return this:\
 \
-\cb5 \{\
+\cb3 \{\
 	roll: -1,\
 	money: 12\
 \}\
 \cb4 \
-At the beginning of handleClick, create a money variable that is set to this.state.money.\
+At the beginning of handleClick, create a money variable that is set to this.state.money .\
 \
 In the middle of handleClick, add in this if/else:\
 \
-\cb5 if (roll < 3) \{\
+\cb3 if (roll < 3) \{\
     money += 8;\
 \} else \{\
     money -= 4;\
 \}\
 \cb4 \
-Shove roll and money back into state.\
+Finish handleClick by shoving roll and money back into state.\
 \
-Final step. We need to display how much money we have, so set a new money variable to this.state.money, and add this to the return:\
+Final step. We need to display how much money we have. So inside App's render, set a new money variable to this.state.money, and add this to the return:\
 \
-\cb5 <p>Money left: $\{this.state.money\}</p>\cb4 \
+\cb3 <p>Money left: $\{this.state.money\}</p>\cb4 \
 \
 Try playing your game! It should work beautifully.\
 \
-Note: When you setState, you don't have to pass in values for every state variable. In handleClick, I could setState(\{roll: roll\}), and only roll would be updated. All other values would be left as is.\
+Note: When you setState, you don't have to pass in values for every state variable. In handleClick, I could \cb5 setState( \{roll: roll\} )\cb4  , and only roll would be updated. All other values would be left as is.\
 \
 \pard\pardeftab720\partightenfactor0
 
 \b\fs28 \cf0 Single Point of Truth
 \b0\fs24 \
 \
-One very important rule about state is to not overstuff it. You want to minimize what's tracked inside of state to reduce potential for mistake. Let's say I have a theoretical app with this code:\
+Now that we know about state, we should cover an important rule.You should not overstuff state. You want to minimize what's tracked inside of state to reduce potential for mistake. Let's say I have a theoretical app with this code:\
 \
 \pard\pardeftab720\partightenfactor0
-\cf0 \cb5 handleClick: function() \{\
+\cf0 \cb3 handleClick: function() \{\
     var rand = this.getRandomNumber();\
     this.setState(\{\
         number: rand,\
@@ -405,7 +448,11 @@ render: function() \{\
     return <p>\{this.state.message\}</p>;\
 \}\
 \cb4 \
-The important thing to note is that if you know this.state.number, you can always figure out this.state.message. This means that message should not be stored in state; it should be computed right before it's used. What should be done:\
+The important thing to note is that if you know this.state.number, you can always figure out this.state.message. This means that message should not be stored in state; it should be computed right before it's used.\
+\
+Imagine if in another function you update this.state.number but not this.state.message . That's a bug. The following approach means this bug can never happen.\
+\
+What should be done:\
 \
 \cb3 handleClick: function() \{\
     var rand = this.getRandomNumber();\
@@ -422,44 +469,44 @@ Looking back at our game, this is why message is computed in render() and not tr
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 Props
+\b\fs36 \cf0 \ul Props
 \fs28 \ulnone \
 \
 \pard\pardeftab720\partightenfactor0
 
 \b0\fs24 \cf0 For the completed "Props" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/DiceGame/Props"}}{\fldrslt \cf2 \ul \ulc2 Github link}}\
 \
-Props! They're one of my favorite parts of ReactJS, even if I don't know why.\
-\
 In HTML, remember how you can pass in information to div's?\
 \
-\cb5 <div style="title: Lol, how did you find me?">Welcome to my website!</div>\
+\cb3 <div style="title: Lol, how did you find me?">Welcome to my website!</div>\
 \cb4 \
-We can do the same thing with ReactJS too! These are called props, and have a few uses.\
+We can do the same thing with ReactJS too! These are called props, if you haven't guessed yet.\
 \
 Now, let's start off simple. Back in our game, let's make it so that we can 
 \i control
 \i0  how much money we start with. I'd like 9999 dollars instead of 12, wouldn't you agree?\
 \
-First off, in src/index.js, render <App money=\{9999\} /> instead of <App />.\
+First off, in src/index.js, render \cb5 <App money=\{9999\} />\cb4  instead of \cb5 <App />\cb4  .\
 \
-Now, in src/App.js, in getInitialState, set money to this.props.money. Done!\
+Now, in src/App.js, in getInitialState, set money to this.props.money . Done!\
 \
 Yes, it's that easy.\
 \
-Try playing again.\
+Try refreshing the game in your browser.\
 \
-Early, remember how I said only a component should alter its state? What if component A wants to pass information to component B? That should be done through props.\
+Remember earlier how I said only a component alters its state? Props is for when anything else needs to alter a component.\
 \
 \pard\pardeftab720\partightenfactor0
 
 \b\fs28 \cf0 DefaultProps
 \b0\fs24 \
 \
-What if someone doesn't pass in the money prop? We can handle that! Add this to the top of App:\
+I'm worried. What if someone reusing our code doesn't pass in the money prop?\
+\
+We can indeed handle that by setting a default money value! Add this to the top of App:\
 \
 \pard\pardeftab720\partightenfactor0
-\cf0 \cb5     getDefaultProps: function() \{\
+\cf0 \cb3     getDefaultProps: function() \{\
         return \{\
             money: 12\
         \};\
@@ -467,25 +514,27 @@ What if someone doesn't pass in the money prop? We can handle that! Add this to 
 \cb4 \
 Notice how it's similar to getInitialState?\
 \
-If you want to test this for yourself, in src/Index.js, render <App /> .\
+If you want to test this for yourself, then in src/Index.js, render <App /> .\
 \
 \pard\pardeftab720\partightenfactor0
 
 \b\fs28 \cf0 PropTypes
 \b0\fs24 \
 \
-One of the concerns whenever you work with props is that you can't control what's passed in. What if someone passed "apple" in as this.props.money? Our app would crash! Plus, in complex apps, this would be hard to debug.\
+I'm still worried. What is someone reusing our code passes in "potato" for the money prop? Our code wouldn't work, unless you lived in Ireland.\
 \
-ReactJS combats this by allowing you to control the type of props passed in. For our app, add this below getDefaultProps:\
+To combat this, ReactJS allows us to control the type of props passed in.\
+\
+Inside App, add this below getDefaultProps:\
 \
 \pard\pardeftab720\partightenfactor0
-\cf0 \cb5 propTypes: \{\
+\cf0 \cb3 propTypes: \{\
     money: React.PropTypes.number\
 \},\
 \cb4 \
 What this says is that the money prop 
 \i must
-\i0  be a number.\
+\i0  be a number. If you look, you'll also notice that React uses its own fancy naming scheme for variable types.\
 \
 Note: For a full list of React PropTypes, go {\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/typechecking-with-proptypes.html"}}{\fldrslt here}}.\
 \
@@ -493,20 +542,99 @@ Note: If you
 \i require
 \i0  that someone pass in a prop, you can append .isRequired to the end of React.PropTypes.xxxx\
 \
-We will be switching to different examples for future topics. If you are interested in experimenting with the game a bit more, try these things:\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \ul Midway Note
+\b0\fs24 \ulnone \
+\
+We will be switching to different examples for future topics. If you are interested in experimenting with the die game a bit more, try these things:\
 \
 * Fix the -1 bug. When you refresh the page, you are told that you rolled -1. Whaaaa....\
-** Hint: Inside render, return some text if this.state.roll == -1, else do the normal stuff.\
+** Hint: Inside render, return some text if \cb5 this.state.roll == -1\cb4  , else run the normal code.\
 * Make it so that you can't play when you have negative money.\
+\
+
+\b\fs36 \ul Styles
+\b0\fs24 \ulnone \
+\
+You've been tasked to make a llama website for Mr. Rainbole! You've got some work done, so download it and put it in the src/ folder: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Llamas/Base"}}{\fldrslt link}}\
+\
+The website looks bland... Let's spice it up with style!\
+\
+Inside src/App.js, put this inside <center>:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 style=\{\{ background: "oldlace", fontFamily: "arial" \}\}\
+\cb4 \
+Refresh. Looking better, mmm.\
+\
+One thing you might notice are the double curly brackets. 
+\i What's that?
+\i0  The outer curly brackets specify that their contents should be interpreted as JS. The inner curly braces specify a JS object, which contains styles for <center>.\
+\
+Now, why not use regular HTML syntax? To quote {\field{\*\fldinst{HYPERLINK "https://facebook.github.io/react/docs/dom-elements.html#style"}}{\fldrslt Facebook}}, React's syntax "is consistent with the DOM style Javascript property, is more efficient, and prevents XSS security holes."\
+\
+Let's try something new. Restore src/App.js to original, then put this outside App:\
+\
+\cb3 var styles = \{\
+	background: "oldlace",\
+	fontFamily: "arial"\
+\};\
+\cb4 \
+Now, give <center> the style \{styles\}. We just did the same thing. All we did differently was define styles outside of App. You can reuse it too!\
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \ul \ulc0 Component-to-Component Interactions
+\i \cf0 All of a sudden
+\i0 , Mr. Rainbole walks into the room and sees your website. He loves the 'oldlace' color, and congratulates you on the progress. You feel accomplished!\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 CSS Files
+\b0\fs24 \
+\
+For the completed "CSS Files" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Llamas/CSS%20Files"}}{\fldrslt Github link}}\
+\
+Reset your project to this: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Llamas/Base"}}{\fldrslt link}}\
+\
+Above is one way to pass around CSS styles. Another way is through a css file. Which seems quite obvious. Let's rewrite App to use a css file.\
+\
+In src/App.css, add this code:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 center \{\
+	background-color: oldlace;\
+	font-family: arial;\
+\}\
+\cb4 \
+Note: It's normal to name component CSS files after the component file.\
+\
+Next, restore src/App.js to original, and add this to the top:\
+\
+\cb3 import './App.css';\
+\cb4 \
+Now App gets its own little targeted CSS file! Huzzah!\
+\
+Let's look into CSS classes, because it is slightly different in ReactJS. In ReactJS, you don't give components classes. You give them 
+\i classNames
+\i0 . Odd, I know. Let's try it out.\
+\
+In src/App.js, insert this into the <center>: \cb5 className="App"\cb4 \
+\
+I\cb4 n src/App.css, replace "center" with ".App"\cb4 \
+\
+Refresh the webpage. It's always nice to see the results with your own three eyes.\
+\
+We are moving onto another project. Feel free to mess around with this one!\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \ul Component-to-Component Interactions
 \b0\fs24 \ulnone \
 \
 For the completed "Component-to-Component Interactions" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Madlib/Completed"}}{\fldrslt Github link}}\
 \
-I have coded a simple madlib project for us, but it doesn't work! It makes __ very __. Let's fix it. First off, copy these files into your src/ folder: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Madlib/Base"}}{\fldrslt link}}\
+I have coded a simple madlib project for us, but it doesn't work! Gah! It makes __ very __. Let's fix it. First off, copy these files into your src/ folder: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Madlib/Base"}}{\fldrslt link}}\
 \
 Look around the project a bit and see what's happening. It's a bit of an expansion compared to what we're used to: 5 files! Look at the website in your browser too.\
 \
@@ -519,7 +647,7 @@ However, if App is sending information to Sibling, we need it to have default va
 The second step is, in App's render, to pass name and item into Sibling. That would normally require:\
 \
 \pard\pardeftab720\partightenfactor0
-\cf0 \cb5 <Sibling name=\{this.props.name\} item=\{this.props.item\} />\
+\cf0 \cb3 <Sibling name=\{this.props.name\} item=\{this.props.item\} />\
 \cb4 \
 However that looks long, and we're lazy. There is a shorter way to type this ...\
 \
@@ -531,7 +659,7 @@ Thirdly, in Sibling, replace _1_ with \{this.props.name\} and _2_ with \{this.pr
 \
 Fourthly, we need to make it so Child1 and Child2 can change the word values stored inside App. Let's put, in App, this function:\
 \
-\cb5     changeWord: function(key, value) \{\
+\cb3     changeWord: function(key, value) \{\
         var state = \{\};\
         state[key] = value;\
         this.setState(state);\
@@ -541,14 +669,14 @@ We need to let Child1 and Child2 access this function, so in App's render, give 
 \
 Inside Child1's handleChange, use:\
 \
-\cb5         var name = e.target.value;\
+\cb3         var name = e.target.value;\
         this.props.changeWord("name", name);\
-\cb1 \
+\cb4 \
 Inside Child2's handleChange, use:\
 \
-\cb5         var item = e.target.value;\
+\cb3         var item = e.target.value;\
         this.props.changeWord("item", item);\
-\cb1 \
+\cb4 \
 You're done! Try out the madlib.\
 \
 Let's discuss what just happened. Whenever Children need to communicate with each other, they should go through their parent. Child1 and Child2 both used changeWord to change App's word, and App passed all changes down to Sibling.\
@@ -559,8 +687,9 @@ Our madlib project has good organization. App handles data management, Child1 an
 \
 Meanwhile, our die game has bad organization. Bad code, bad bad. App does three jobs: display game data, display a play button, and handle game logic. It should split into three components (aka two new ones), with App handling the game logic.\
 \
+\pard\pardeftab720\partightenfactor0
 
-\b\fs36 \ul Stateless vs Stateful Components
+\b\fs36 \cf0 \ul Stateless vs Stateful Components
 \b0\fs24 \ulnone \
 \
 Now that we're dabbling with multiple components, let me introduce a new concept. A stateful component is a component with a state, and a stateless component is one without a state.\
@@ -579,27 +708,270 @@ Secondly, when the parent's state is updated, the parent should pass its state d
 \
 This information is very important when writing larger React projects. Look back at the madlib project and see how this all applies there.\
 \
-\pard\pardeftab720\partightenfactor0
 
-\b\fs36 \cf0 \cb4 \ul \ulc0 To Be Continued
+\b\fs36 \ul Lifecycle Methods
 \b0\fs24 \ulnone \
 \
-There is one thing left to cover:\
+For the completed "LifeCycle" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Peekaboo/Completed"}}{\fldrslt Github link}}\
 \
-* Lifecycle methods\
+Let's make a {\field{\*\fldinst{HYPERLINK "https://en.wikipedia.org/wiki/Peekaboo"}}{\fldrslt Peekaboo}} app for your sister! She 
+\i really really
+\i0  likes the game. Imagine if you put this app on a tablet and gave it to her.\
 \
-Then we should have everything, I mean everything. There will be a review section to help this all sink in.\
+Copy the code from here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/Peekaboo/Base"}}{\fldrslt link}}\
 \
-I will finish this sometime soon. In the meanwhile, dig in!\
+Open the website in your browser. We have an eye emoji, and that's it.\
+\
+Let's start by making the eyes hide. Let's do this through the lifecycle method 
+\i componentWillMount
+\i0 . When a component is added to a website, 
+\i componentWillMount
+\i0  is called. In other words, when an object first renders, 
+\i componentWillMount
+\i0  is called.\
+\
+Inside App, add this:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 componentWillMount: function() \{\
+	this.toggleShowing();\
+\},\
+\cb4 \
+Refresh your website. Notice how the eyes have hidden?\
+\
+We want to do this repeatedly, so at the end of App's toggleShowing, add this code:\
+\
+\cb3 setTimeout(this.toggleShowing, 4000);\
+\cb4 \
+Now, the eyes will hide and show every 4 seconds, aka 4000 milliseconds. Good job!\
+\
+You start to think, and realize that your sister likes flashiness. So, let's make this flashy!\
+\
+Inside src/Eyes.js, add this code:\
+\
+\cb3     componentWillMount: function() \{\
+        alert("Peekaboo!");\
+    \},\
+    \
+    componentDidMount: function() \{\
+        alert("Here I am!");\
+    \},\
+\cb4 \
+This makes so that you get "Peekaboo!" message, the eyes appear with a message "Rendering!", then you get "Here I am!". Repeat ad infimum.\
 \
 \pard\pardeftab720\partightenfactor0
 
-\b\fs48 \cf0 \ul \ulc0 Extras\
-
-\fs24 \
+\i \cf0 componentDidMount
+\i0  is another lifecycle method. It is called right after 
+\i render.
+\i0 \
+\
+Oh yeah, 
+\i render
+\i0  itself is a lifecycle method.\
+\
+These lifecycle methods form a chain, with methods being called one after another: componentWillMount -> render -> componentDidMount. This chain is triggered when a component is first rendered/mounted on a website.\
+\
+There are two other lifecycles. We will dig into them below.\
+\
+You give your website to your sister, and she loves it! Good job!\
+\
 \pard\pardeftab720\partightenfactor0
 
-\fs36 \cf0 \cb1 \ulc0 Syntax Highlighting
+\b\fs36 \cf0 \ul Lifecycle Methods - List\
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 \ulnone \
+Lifecycle methods are methods that are called when certain things happen to a component.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Mounting\ul \
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 \ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\i \cf0 Mounting
+\i0  is when an object is first added to a website, aka it renders for the first time. When an object mounts, it will call these methods in this order:\
+\
+* componentWillMount\
+* render\
+* componentDidMount\
+\
+Note: The purpose of 
+\i componentWillMount
+\i0  is to run code the first time something renders. It is a great place to put any API interactions.\
+\
+Note: The purpose of 
+\i componentDidMount
+\i0  is to do any cleanup if anything called during the lifecycle requires cleanup.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Unmounting\ul \
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 \ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\i \cf0 Unmounting
+\i0  is when an object is removed from a website. When an object unmounts, it will call these methods in this order:\
+\
+* componentWillUnmount\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 Updating
+\fs36 \ul \
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 \ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\i \cf0 Updating
+\i0  is when a component re-renders. All renders after the first render count. When an object updates, it will call these methods in this order:\
+\
+* componentWillReceiveProps\
+* shouldComponentUpdate\
+* componentWillUpdate\
+* render\
+* componentDidUpdate\
+\
+Note: Inside 
+\i componentWillReceiveProps
+\i0 , you will be passed the props that your component is about to receive. Like this:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb3 componentWillReceiveProps: function (nextProps) \{\
+	alert("I will got these new fancy props: " + nextProps);\
+\}\
+\cb4 \
+You can use this method to preview upcoming props, and to act if need be. Remember, you can still access your old props via this.props!\
+\
+Note: The purpose of 
+\i shouldComponentUpdate
+\i0  is to allow you to control if a component should re-render or not. If inside the method you return false, then componentWillUpdate & render & componentDidUpdate will not run. For example:\
+\
+\cb3 shouldComponentUpdate: function (nextProps, nextState) \{\
+	if (this.state.cash < nextState.cash) \{\
+		alert("No! No no nope not updating.");\
+		return false;\
+	\} else \{\
+		return true;\
+	\}\
+\}\
+\cb4 \
+Note: 
+\i componentWillUpdate
+\i0  is called right before render, and it receives nextProps and nextState. At this time, props and state haven't updated yet. Also, you can't call this.setState() from inside 
+\i componentWillUpdate
+\i0 .\
+\
+The main purpose of 
+\i componentWillUpdate
+\i0  is to interact with items outside of React.\
+\
+Note: The purpose of 
+\i componentDidUpdate
+\i0  is to do any cleanup if anything called during the lifecycle requires cleanup.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \ul Final Note
+\b0\fs24 \ulnone \
+\
+We've reached 99% of what ReactJS has. Everything from here on out is pretty much organization or review.\
+\
+One good mantra is that you learn best by doing! So, I'll take a moment to list some simple project ideas that you can create in ReactJS:\
+\
+* Make a quote displayer. Every ten seconds, switch to a new quote.\
+* Make a clock. I recommend making a Clock component with a this.state.date of new Date(), and also use \{this.state.date.toLocaletimeString()\} for rendering.\
+* Make a Tic-Tac-Toe game with X and O text symbols and a table.\
+\
+For more work with LifeCycle methods:\
+\
+* Go into the die game, and make it so that if you lose money, don't update! No, no.\
+* In the madlib project, make it so that Sibling rejects any props equal to "Apple". Better yet, implement a banned word list!\
+\
+For an example that ties together everything taught, see section 
+\b Examples
+\b0 .\
+\
+
+\b\fs36 \ul Component Arrays
+\b0\fs24 \ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\b\fs28 \cf0 and Keys
+\b0\fs24 \
+\
+For the completed "Component Arrays" code, go here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/ShoppingCart/Completed"}}{\fldrslt Github link}}\
+\
+This is where the 1% left comes in. It's common code found in ReactJS apps.\
+\
+Let's say you want to display a list of components, like in an Amazon shopping cart. How would you do this?\
+\
+Copy this code: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/ShoppingCart/Base"}}{\fldrslt link}}\
+\
+This is one way, with a for loop. We make a list of Item components, store it in CartContents, then render CartContents. There is, however, a more JS-y way to do this.\
+\
+Introducing Array.map()! There are two general formats:\
+\
+\pard\pardeftab720\partightenfactor0
+\cf0 \cb5 var numbers = [1,2,3,4,5];\
+var incremented1 = \cb3 numbers.map( function( num ) \{ return num+1; \} );\cb5 \
+\
+var incremented2 = \cb3 numbers.map( num => num+1 );\cb5 \
+\cb4 \
+In incremented1, we take each 
+\i num
+\i0  out of 
+\i numbers
+\i0  incrementally, and return num+1. This eventually builds an array of everything returned.\
+\
+Incremented2 is just shorthand for incremented1.\
+\
+Back to our shopping cart! Replace cartContents with this:\
+\
+\cb5 var CartContents = this.state.cart.map(name => <Item name=\{name\} />);\
+\cb4 \
+Now we have the same performance done more sleekly.\
+\
+You might notice though... Your browser console is complaining that "Each child in an array or iterator should have a unique "key" prop." This is true. For ReactJS to know that each item is unique, and to avoid any bugs with adding or removing items, we need to give each item a unique key. Think of it as an ID or name. A key is something special to each component.\
+\
+Each cart item should only have one item component, so we can guarantee that an item component's name will be unique. We might as well use it as the key then. Replace CartContents with this:\
+\
+\cb5 var CartContents = this.state.cart.map(name => <Item name=\{name\} key=\{name\} />);\
+\cb4 \
+\pard\pardeftab720\partightenfactor0
+
+\b\fs48 \cf0 \ul Examples\
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 \ulnone \
+\pard\pardeftab720\partightenfactor0
+
+\b\fs36 \cf0 \ul Pet Simulator
+\fs48 \
+\pard\pardeftab720\partightenfactor0
+
+\b0\fs24 \cf0 \ulnone \
+I went overboard with this one, because it was 
+\i soo fuunnn
+\i0 . However, it is a good example of a real-world React app. The code is here: {\field{\*\fldinst{HYPERLINK "https://github.com/Choco31415/ReactJS_Tutorial/tree/master/PetSimulator/Completed"}}{\fldrslt Github link}}\
+\
+This app is a pet simulator. Feel free to look around and fool around with it. I recommend viewing it in the browser first.\
+\
+\pard\pardeftab720\partightenfactor0
+
+\b\fs48 \cf0 \ul Extras\
+\pard\pardeftab720\partightenfactor0
+
+\fs24 \cf0 \
+\pard\pardeftab720\partightenfactor0
+
+\fs36 \cf0 Syntax Highlighting
 \b0\fs24 \ulnone \
 \
 Unfortunately, the Facebook tutorial sets up all files with the .js extension instead of .jsx . This means syntax highlighting in code editors will be wonky... If you want to fix that, follow these steps:\

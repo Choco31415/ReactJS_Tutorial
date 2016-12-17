@@ -1,0 +1,36 @@
+.Pet {
+    height: 100px;
+    border: grey 2px solid;
+    border-radius: 10px;
+    margin: 5px;
+    
+    display: inline-block;
+}
+
+.Pet img {
+    height: 100px;
+    
+    border-radius: 8px 0px 0px 8px;
+}
+
+.Pet table {
+    border-collapse: collapse;
+}
+
+.Pet td {
+    padding: 0;
+}
+
+.Pet td:first-child {
+    width: 152px;
+}
+
+.Pet .Hugs {
+    width: 100px;
+    text-align: center;
+}
+
+.Pet .Adoption {
+    width: 100px;
+    text-align: center;
+}
